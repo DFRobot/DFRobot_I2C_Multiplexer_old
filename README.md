@@ -38,7 +38,6 @@ void loop(){
     Serial.println(Wire.read());
   }
 }
-}
 ```
 
 ## Methods
