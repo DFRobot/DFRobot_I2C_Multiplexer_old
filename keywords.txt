@@ -12,7 +12,7 @@ DFRobot_I2CMultiplexer	KEYWORD1
 #######################################
 scan	KEYWORD2
 DFRobot_I2CMultiplexer	KEYWORD2
-select	KEYWORD2
+selectPort	KEYWORD2
 read	KEYWORD2
 write	KEYWORD2
 #######################################
