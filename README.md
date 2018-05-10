@@ -1,0 +1,199 @@
+# I2C Multiplexer Library for Arduino/ESP32/RaspberrayPi
+This is a Library for I2C Multiplexer,the function is to solve multiple I2C device address conflicts.
+
+![SVG1](https://raw.githubusercontent.com/DFRobot/binaryfiles/master/DFR0515/DFR0515svg1.png)
+
+## Table of Contents
+
+* [Summary](#summary)
+* [Methods](#methods)
+* [Compatibility](#compatibility)
+* [History](#history)
+* [Credits](#credits)
+
+
+<snippet>
+<content>
+
+## Summary
+This is a Library for OSD,it can solve multiple I2C device address conflicts.
+
+## Methods
+
+### Arduino
+```C++
+
+#include <DFRobot_I2CMultiplexer.h>
+/*
+ * @brief The constructor
+ *
+ * @param addr The I2CMultiplexer addr
+ */
+DFRobot_I2CMultiplexer(uint8_t addr);
+
+/*
+ * @brief Scan I2C on the port
+ *
+ * @param port The port which to scan
+ *
+ * @return I2C addr buffer
+ */
+uint8_t *scan(uint8_t port);
+
+/*
+ * @brief Read data from I2C
+ *
+ * @param port The port I2C inserted 
+ *        addr 7bit i2c device address
+ *        buf  The buffer that receives the data.
+ *        len  The length of data received.
+ *        sendStop  Boolean indicating whether to send a stop at the end
+ *
+ * @return number of bytes read
+ */
+uint8_t read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendStop=1);
+
+/*
+ * @brief write data to I2C
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        buf  Pointer to byte array
+ *        len  Number of bytes in array
+ *        sendStop  Boolean indicating whether to send a stop at the end
+ *        wait  Boolean indicating to wait for write or not
+ *        sendStop  Boolean indicating whether or not to send a stop at the end
+ *
+ * @return 0 success else false
+ */
+uint8_t write(uint8_t port,uint8_t addr, uint8_t* data, uint8_t len, uint8_t wait=1, uint8_t sendStop=1);
+```
+### micropython
+```python
+
+import I2CMultiplexer
+/*
+ * @brief The constructor.
+ *
+ * @param I2CMultiAddr The I2CMultiplexer addr.
+ */
+I2CMultiplexer(I2CMultiAddr)
+
+/*
+ * @brief Scan I2C on the port
+ * 
+ * @param port The port which to scan
+ *
+ * @return I2C addr buffer
+ */
+scan(port)
+
+/*
+ * @brief write data to I2C.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        buf  write data 
+ *
+ * @return number of bytes written
+ */
+writeto(port,addr,buf)
+
+/*
+ * @brief read data from I2C.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        buf  The buffer that receives the data. 
+ *
+ * @return number of bytes read
+ */
+readfrom(port,addr,nbytes)
+
+/*
+ * @brief write data to I2C memory.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        reg  i2c register
+ *        buf  write data  
+ *
+ * @return number of bytes written
+ */
+writeto_mem(port,addr,reg,buf)
+
+/*
+ * @brief read data from I2C memory.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        reg  i2c register
+ *        nbytes  Receives the data length. 
+ *
+ * @return Read data
+ */
+readfrom_mem(port,addr,reg,nbytes)
+
+```
+### Raspberry Pi
+```python
+
+import I2CMultiplexer
+/*
+ * @brief The constructor.
+ *
+ * @param I2CMultiAddr The I2CMultiplexer addr.
+ */
+I2CMultiplexer(I2CMultiAddr)
+
+/*
+ * @brief Scan I2C on the port
+ * 
+ * @param port The port which to scan
+ *
+ * @return I2C addr buffer
+ */
+scan(port)
+
+/*
+ * @brief write data to I2C memory.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        reg  i2c register
+ *        buf  write data  
+ *
+ * @return number of bytes written
+ */
+writeto_mem(port,addr,reg,buf)
+
+/*
+ * @brief read data from I2C memory.
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ *        addr  7bit i2c device address
+ *        reg  i2c register
+ *        nbytes  Receives the data length. 
+ *
+ * @return Read data
+ */
+readfrom_mem(port,addr,reg,nbytes)
+```
+
+## Compatibility
+
+MCU                | Work Well | Work Wrong | Untested  | Remarks
+------------------ | :----------: | :----------: | :---------: | -----
+FireBeetle-ESP32 |      √       |             |            | 
+RaspberrayPi |      √       |             |            | 
+Leonardo |      √       |             |            | 
+
+## History
+
+- data 2018-5-9
+- version V0.1
+
+
+## Credits
+
+- author [Luyuhao  <yuhao.lu@dfrobot.com>]
