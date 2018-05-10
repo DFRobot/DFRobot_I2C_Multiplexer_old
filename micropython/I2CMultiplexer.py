@@ -28,6 +28,8 @@ class I2CMultiplexer:
     self.i2c.start()
     self.i2c.writeto(self.addr,buf)
     self.i2c.stop()
+    b = bytearray(1)
+    self.i2c.write(b)
   
   def writeto(self,port,addr,buf):
     self.selectPort(port)
@@ -43,7 +45,4 @@ class I2CMultiplexer:
     
   def readfrom_mem(self,port,addr,reg,nbytes):
     self.selectPort(port)
-    b = bytearray(1)
-    b[0] = 0
-    self.i2c.write(b)
     return self.i2c.readfrom_mem(addr,reg,nbytes)

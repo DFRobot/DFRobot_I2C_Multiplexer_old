@@ -16,7 +16,7 @@ uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
   static uint8_t dev[8] = {0};
   memset(dev,0,sizeof(dev));
   uint8_t i = 0;
-  select(port);
+  selectPort(port);
   for(uint8_t addr = 0; addr<=127; addr++) {
     if (addr == I2CMultiplexer){ continue;}
     uint8_t data;
@@ -28,10 +28,10 @@ uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
   return dev;
 }
 
-void DFRobot_I2CMultiplexer::select(uint8_t i){
-  if (i > 7) return;
+void DFRobot_I2CMultiplexer::selectPort(uint8_t port){
+  if (port > 7) return;
   Wire.beginTransmission(I2CMultiplexer);
-  Wire.write(1 << i);
+  Wire.write(1 << port);
   Wire.endTransmission();
 }
 
@@ -44,7 +44,7 @@ void DFRobot_I2CMultiplexer::select(uint8_t i){
  * Output   number of bytes read
  */
 uint8_t DFRobot_I2CMultiplexer::read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendStop=1){
-  select(port);
+  selectPort(port);
   return twi_readFrom(addr,buf,len,sendStop);
 }
 
@@ -62,6 +62,6 @@ uint8_t DFRobot_I2CMultiplexer::read(uint8_t port,uint8_t addr, uint8_t* buf, ui
  *          4 .. other twi error (lost bus arbitration, bus error, ..)
  */
 uint8_t DFRobot_I2CMultiplexer::write(uint8_t port,uint8_t address, uint8_t* data, uint8_t length, uint8_t wait=1, uint8_t sendStop=1){
-  select(port);
+  selectPort(port);
   return twi_writeTo(address,data,length,wait,sendStop);
 }

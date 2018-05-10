@@ -7,7 +7,7 @@ public:
 
   DFRobot_I2CMultiplexer(uint8_t addr);
   uint8_t *scan(uint8_t port);
-  void select(uint8_t i);
+  void selectPort(uint8_t port);
   uint8_t read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendStop=1);
   uint8_t write(uint8_t port,uint8_t address, uint8_t* data, uint8_t length, uint8_t wait=1, uint8_t sendStop=1);
 

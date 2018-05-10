@@ -4,6 +4,7 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 ## Table of Contents
 
 * [Summary](#summary)
+* [Use](#use)
 * [Methods](#methods)
 * [Compatibility](#compatibility)
 * [History](#history)
@@ -15,6 +16,30 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 
 ## Summary
 This is a Library for OSD,it can solve multiple I2C device address conflicts.
+
+## Use
+
+### Arduino
+``` C++
+#include <Wire.h>
+#include <DFRobot_I2CMultiplexer.h>
+int I2CAddr = 16;
+DFRobot_I2CMultiplexer dev(0x70);
+void setup(){
+  Serial.begin(9600);
+}
+void loop(){
+  dev.selectPort(1);                    //select Port
+  Wire.beginTransmission(I2CAddr);
+  Wire.write(0x00); 
+  Wire.endTransmission();
+  Wire.requestFrom(I2CAddr, 4);
+  while (Wire.available()){
+    Serial.println(Wire.read());
+  }
+}
+}
+```
 
 ## Methods
 
@@ -65,6 +90,13 @@ uint8_t read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendS
  * @return 0 success else false
  */
 uint8_t write(uint8_t port,uint8_t addr, uint8_t* data, uint8_t len, uint8_t wait=1, uint8_t sendStop=1);
+
+/*
+ * @brief Select I2C Port 
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ */
+void selectPort(uint8_t port)
 ```
 ### micropython
 ```python
@@ -132,6 +164,12 @@ writeto_mem(port,addr,reg,buf)
  */
 readfrom_mem(port,addr,reg,nbytes)
 
+/*
+ * @brief Select I2C Port 
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ */
+selectPort(port)
 ```
 ### Raspberry Pi
 ```python
@@ -176,7 +214,15 @@ writeto_mem(port,addr,reg,buf)
  * @return Read data
  */
 readfrom_mem(port,addr,reg,nbytes)
+
+/*
+ * @brief Select I2C Port 
+ *
+ * @param port  I2CMultiplexer port(0~7)
+ */
+selectPort(port)
 ```
+
 
 ## Compatibility
 
