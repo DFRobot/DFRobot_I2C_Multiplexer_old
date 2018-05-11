@@ -15,7 +15,7 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 <content>
 
 ## Summary
-This is a Library for OSD,it can solve multiple I2C device address conflicts.
+This is a Library for I2C Multiplexer,it can solve multiple I2C device address conflicts.
 
 ## Use
 

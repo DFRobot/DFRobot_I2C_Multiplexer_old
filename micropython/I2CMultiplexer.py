@@ -28,8 +28,6 @@ class I2CMultiplexer:
     self.i2c.start()
     self.i2c.writeto(self.addr,buf)
     self.i2c.stop()
-    b = bytearray(1)
-    self.i2c.write(b)
   
   def writeto(self,port,addr,buf):
     self.selectPort(port)
