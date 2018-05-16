@@ -12,7 +12,7 @@
   */
 #include <DFRobot_I2CMultiplexer.h>
 
-/*0x70 is I2C Multiplexer addr*/
+/*创建一个I2CMultiplexer对象,0x70是I2C Multiplexer的地址*/
 DFRobot_I2CMultiplexer I2CMultiplexer(0x70);
 
 void setup(){
@@ -21,7 +21,7 @@ void setup(){
   delay(1000);
   Serial.println("Scan ready!");
   
-  /*Print the I2C device address for each port*/
+  /*打印每一个端口上的I2C设备*/
   for (uint8_t port=0; port<8; port++) {
     Serial.print("Port:"); Serial.print(port);
     uint8_t dev = I2CMultiplexer.scan(port);
