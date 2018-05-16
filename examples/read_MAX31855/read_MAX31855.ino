@@ -29,14 +29,16 @@ void setup(){
 
 void loop(){
   int stat;
+  
+  /*Select port 2 because MAX31855 on this port*/
+  I2CMultiplexer.selectPort(2);
+  
   /*Detect I2C device*/
   stat = max31855.scan();
   if(!stat){
     Serial.println("No I2C devices!");
   }
   else{
-    /*Select port 2 which MAX31855 on the port*/
-    I2CMultiplexer.selectPort(2);
     /*Read Celsius*/
     float temp = max31855.readCelsius();
     Serial.print("Temperature:");
