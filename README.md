@@ -29,7 +29,7 @@ void setup(){
   Serial.begin(9600);
 }
 void loop(){
-  dev.selectPort(1);                    //选择端口后, 主机将会扫描到从机
+  dev.selectPort(1);                    //选择端口后, 主机将会扫描到这个端口上的从机
   Wire.beginTransmission(I2CAddr);
   Wire.write(0x00); 
   Wire.endTransmission();
