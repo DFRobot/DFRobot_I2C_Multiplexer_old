@@ -29,11 +29,7 @@ class I2CMultiplexer:
     
   def writeto_mem(self,port,addr,reg,buf):
     self.selectPort(port)
-    l = len(buf)
-    for i in range(0,l):
-      self.i2c.write_byte_data(addr,reg,buf[i])
-    time.sleep(0.1)
-    return l
+    self.i2c.write_i2c_block_data(addr,reg,buf)
     
   def readfrom_mem(self,port,addr,reg,nbytes):
     self.selectPort(port)

@@ -13,7 +13,8 @@ DFRobot_I2CMultiplexer::DFRobot_I2CMultiplexer(uint8_t addr){
 }
 
 uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
-  static uint8_t dev[8] = {0};
+//  static uint8_t dev[8] = {0};
+  uint8_t dev;
   memset(dev,0,sizeof(dev));
   uint8_t i = 0;
   selectPort(port);
@@ -21,8 +22,9 @@ uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
     if (addr == I2CMultiplexer){ continue;}
     uint8_t data;
     if(! twi_writeTo(addr, &data, 0, 1, 1)) {
-       dev[i] = addr;
-       i++;
+//       dev[i] = addr;
+//       i++;
+      dev = addr;
     }
   }
   return dev;
