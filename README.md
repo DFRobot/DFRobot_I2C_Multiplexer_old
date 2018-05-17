@@ -1,6 +1,6 @@
 # I2C Multiplexer Library for Arduino/ESP32/RaspberrayPi
 This is a Library for I2C Multiplexer,the function is to solve multiple I2C device address conflicts.
-
+这里放svg图
 ## Table of Contents
 
 * [Summary](#summary)
@@ -15,8 +15,10 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 <content>
 
 ## Summary
-这个是I2C Multiplexer的库,它可以解决多个I2C设备地址冲突的问题.调用selectPort()函数选择端口后,主设备将会扫描到这个端口上的I2C,从而与该端口上的I2C设备通信.
-I2C Multiplexer上的拨码开关可以改变I2C Multiplexer的地址.
+* 这是I2C Multiplexer的库,I2C Multiplexer可以解决一个I2C接口上接多个相同地址设备冲突的问题.
+* I2C Multiplexer有X个I2C子端口，调用selectPort(n)函数选择端口后,主设备将会扫描到子端口n上连接的I2C设备,与子端口n上连接的I2C设备通信. 
+* I2C Multiplexer上的拨码开关可以改变I2C Multiplexer的地址.
+* I2C Multiplexer的子端口上也可以接多个设备
 
 ## Use
 
