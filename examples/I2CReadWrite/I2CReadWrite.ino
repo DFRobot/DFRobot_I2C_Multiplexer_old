@@ -32,7 +32,7 @@ void setup(){
 void loop(){
   uint8_t buf[3] = {0}; 
   
-  /*从0端口的I2C设备的0寄存器中读取3个字节到buf中*/
+  /*从0端口的I2C设备的0寄存器中读取3个字节到buf中,然后依次将buf中的数据按16进制打印出来*/
   if(I2CMultiplexer.read(port,i2c_addr,reg,buf,3) > 0){
     Serial.println((int)buf[0],HEX);  
     Serial.println((int)buf[1],HEX);
