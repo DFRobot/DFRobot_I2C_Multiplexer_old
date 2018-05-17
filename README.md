@@ -107,11 +107,11 @@ import I2CMultiplexer
 I2CMultiplexer(I2CMultiAddr)
 
 /*
- * @brief Scan I2C on the port
+ * @brief   Scan I2C on the port
  * 
- * @param port The port which to scan
+ * @param   port The port which to scan
  *
- * @return I2C addr buffer
+ * @return  I2C addr buffer
  */
 scan(port)
 
@@ -120,7 +120,7 @@ scan(port)
  *
  * @param port  I2CMultiplexer port(0~7)
  *        addr  7bit i2c device address
- *        buf  write data 
+ *        buf   Write data 
  *
  * @return number of bytes written
  */
@@ -131,7 +131,7 @@ writeto(port,addr,buf)
  *
  * @param port  I2CMultiplexer port(0~7)
  *        addr  7bit i2c device address
- *        buf  The buffer that receives the data. 
+ *        buf   The buffer that receives the data. 
  *
  * @return number of bytes read
  */
@@ -142,8 +142,8 @@ readfrom(port,addr,nbytes)
  *
  * @param port  I2CMultiplexer port(0~7)
  *        addr  7bit i2c device address
- *        reg  i2c register
- *        buf  write data  
+ *        reg   i2c register
+ *        buf   Write data  
  *
  * @return number of bytes written
  */
@@ -153,8 +153,8 @@ writeto_mem(port,addr,reg,buf)
  * @brief read data from I2C memory.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
- *        reg  i2c register
+ *        addr  7bit I2C device address
+ *        reg   I2C register
  *        nbytes  Receives the data length. 
  *
  * @return Read data
@@ -193,8 +193,8 @@ scan(port)
  *
  * @param port  I2CMultiplexer port(0~7)
  *        addr  7bit i2c device address
- *        reg  i2c register
- *        buf  write data  
+ *        reg   I2C register
+ *        buf   Write data  
  *
  * @return number of bytes written
  */
@@ -205,7 +205,7 @@ writeto_mem(port,addr,reg,buf)
  *
  * @param port  I2CMultiplexer port(0~7)
  *        addr  7bit i2c device address
- *        reg  i2c register
+ *        reg   I2C register
  *        nbytes  Receives the data length. 
  *
  * @return Read data
