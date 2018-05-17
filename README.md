@@ -58,40 +58,38 @@ DFRobot_I2CMultiplexer(uint8_t addr);
  *
  * @param port The port which to scan
  *
- * @return I2C addr buffer
+ * @return I2C addr
  */
 uint8_t *scan(uint8_t port);
 
 /*
  * @brief Read data from I2C
  *
- * @param port The port I2C inserted 
- *        addr 7bit i2c device address
- *        buf  The buffer that receives the data.
- *        len  The length of data received.
- *        sendStop  Boolean indicating whether to send a stop at the end
+ * @param port  The port I2C inserted 
+ *        addr  7bit I2C device address
+ *        reg   I2C register addr
+ *        data  Pointer to byte array
+ *        len   The length of data received.
  *
  * @return number of bytes read
  */
-uint8_t read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendStop=1);
+uint8_t read(uint8_t port,uint8_t addr,uint8_t reg,uint8_t* data, uint8_t len);
 
 /*
  * @brief write data to I2C
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
- *        buf  Pointer to byte array
- *        len  Number of bytes in array
- *        sendStop  Boolean indicating whether to send a stop at the end
- *        wait  Boolean indicating to wait for write or not
- *        sendStop  Boolean indicating whether or not to send a stop at the end
+ *        addr  7bit I2C device address
+ *        reg   I2C register addr
+ *        buf   Pointer to byte array
+ *        len   Number of bytes in array
  *
  * @return 0 success else false
  */
-uint8_t write(uint8_t port,uint8_t addr, uint8_t* data, uint8_t len, uint8_t wait=1, uint8_t sendStop=1);
+uint8_t write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len);
 
 /*
- * @brief Select I2C Port 
+ * @brief 选择端口,选择端口后,主设备将扫描到该端口上的从设备
  *
  * @param port  I2CMultiplexer port(0~7)
  */

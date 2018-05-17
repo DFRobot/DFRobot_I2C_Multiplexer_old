@@ -20,16 +20,19 @@ void setup(){
   Serial.begin(9600);
   delay(1000);
   Serial.println("Scan ready!");
+  int i = 0;
   
   /*打印每一个端口上的I2C设备*/
   for (uint8_t port=0; port<8; port++) {
     Serial.print("Port:"); Serial.print(port);
-    uint8_t dev = I2CMultiplexer.scan(port);
-    if(dev){
-      Serial.print("  i2c addr ");Serial.print(dev);
+    uint8_t* dev = I2CMultiplexer.scan(port);
+    while(*dev){
+      Serial.print("  i2c addr ");Serial.print(*dev);
+      dev++;
     }
     Serial.println();
   }
 }
 void loop(){
+  
 }

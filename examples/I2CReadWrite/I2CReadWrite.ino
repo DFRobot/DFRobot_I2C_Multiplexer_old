@@ -22,6 +22,9 @@ uint8_t port = 0;
 /*I2C的地址为24*/
 uint8_t i2c_addr = 24;
 
+/*I2C设备的寄存器地址*/
+reg = 0;
+
 void setup(){
   Serial.begin(9600);
 }
@@ -30,16 +33,16 @@ void loop(){
   uint8_t buf[3] = {0}; 
   
   /*从0端口的I2C设备读取3个字节到buf中*/
-  if(I2CMultiplexer.read(port,i2c_addr,buf,3) > 0){
+  if(I2CMultiplexer.read(port,i2c_addr,reg,buf,3) > 0){
     Serial.println((int)buf[0],HEX);  
     Serial.println((int)buf[1],HEX);
     Serial.println((int)buf[2],HEX);
   }
   
-  uint8_t data[3] = {0,111,107};
+  uint8_t data[2] = {111,107};
   
   /*将data写入端口0上的I2C设备,data的长度为3*/
-  if (!I2CMultiplexer.write(port,i2c_addr, data, 3)) {
+  if (!I2CMultiplexer.write(port,i2c_addr,reg, data, 2)) {
      Serial.println("write OK");
   }
   delay(1000);

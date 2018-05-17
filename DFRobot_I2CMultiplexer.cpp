@@ -1,10 +1,4 @@
-#include "Wire.h"
-#include <Arduino.h>
 #include <DFRobot_I2CMultiplexer.h>
-extern "C" { 
-#include "utility/twi.h"  // from Wire library, so we can do bus scanning
-}
-
 
 
 DFRobot_I2CMultiplexer::DFRobot_I2CMultiplexer(uint8_t addr){
@@ -12,9 +6,9 @@ DFRobot_I2CMultiplexer::DFRobot_I2CMultiplexer(uint8_t addr){
   I2CMultiplexer = addr;
 }
 
-uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
-//  static uint8_t dev[8] = {0};
-  uint8_t dev;
+uint8_t *DFRobot_I2CMultiplexer::scan(uint8_t port){
+  static uint8_t dev[127] = {0};
+//  uint8_t dev;
   memset(dev,0,sizeof(dev));
   uint8_t i = 0;
   selectPort(port);
@@ -22,9 +16,9 @@ uint8_t* DFRobot_I2CMultiplexer::scan(uint8_t port){
     if (addr == I2CMultiplexer){ continue;}
     uint8_t data;
     if(! twi_writeTo(addr, &data, 0, 1, 1)) {
-//       dev[i] = addr;
-//       i++;
-      dev = addr;
+       dev[i] = addr;
+       i++;
+//      dev = addr;
     }
   }
   return dev;
@@ -37,33 +31,33 @@ void DFRobot_I2CMultiplexer::selectPort(uint8_t port){
   Wire.endTransmission();
 }
 
-/*
- * Input    port: I2CMultiplexer port(0~7)
- *          address: 7bit i2c device address
- *          data: pointer to byte array
- *          length: number of bytes to read into array
- *          sendStop: Boolean indicating whether to send a stop at the end
- * Output   number of bytes read
- */
-uint8_t DFRobot_I2CMultiplexer::read(uint8_t port,uint8_t addr, uint8_t* buf, uint8_t len, uint8_t sendStop=1){
-  selectPort(port);
-  return twi_readFrom(addr,buf,len,sendStop);
+uint8_t DFRobot_I2CMultiplexer::write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len){
+   selectPort(port);
+   
+   Wire.beginTransmission(addr); // transmit to device #8
+   Wire.write(reg);              // sends one byte
+  
+   for(uint8_t i = 0; i < len; i++){
+      Wire.write(*buf); 
+      buf++;
+   }
+   Wire.endTransmission();    // stop transmitting
+   return 0;
 }
 
-/*
- * Input    port: I2CMultiplexer port(0~7)
- *          address: 7bit i2c device address
- *          data: pointer to byte array
- *          length: number of bytes in array
- *          wait: boolean indicating to wait for write or not
- *          sendStop: boolean indicating whether or not to send a stop at the end
- * Output   0 .. success
- *          1 .. length to long for buffer
- *          2 .. address send, NACK received
- *          3 .. data send, NACK received
- *          4 .. other twi error (lost bus arbitration, bus error, ..)
- */
-uint8_t DFRobot_I2CMultiplexer::write(uint8_t port,uint8_t address, uint8_t* data, uint8_t length, uint8_t wait=1, uint8_t sendStop=1){
+
+uint8_t DFRobot_I2CMultiplexer::read(uint8_t port,uint8_t addr,uint8_t reg,uint8_t* data, uint8_t len){
   selectPort(port);
-  return twi_writeTo(address,data,length,wait,sendStop);
+  int i = 0;
+  Wire.beginTransmission(addr); //Start transmission to device 
+  Wire.write(reg); //Sends register address to read rom
+  Wire.endTransmission(false); //End transmission
+  
+  Wire.requestFrom(addr, len);//Send data n-bytes read
+   while (Wire.available())   // slave may send less than requested
+  {
+    data[i++] = Wire.read(); // print the character
+  }
+//  Serial.println(result[0]);
+  return i;
 }
