@@ -122,7 +122,7 @@ scan(port)
  *        addr  7bit i2c device address
  *        buf   Write data 
  *
- * @return number of bytes written
+ * @return Number of bytes written
  */
 writeto(port,addr,buf)
 
@@ -133,7 +133,7 @@ writeto(port,addr,buf)
  *        addr  7bit i2c device address
  *        buf   The buffer that receives the data. 
  *
- * @return number of bytes read
+ * @return A bytes object with the data read
  */
 readfrom(port,addr,nbytes)
 
@@ -145,7 +145,7 @@ readfrom(port,addr,nbytes)
  *        reg   i2c register
  *        buf   Write data  
  *
- * @return number of bytes written
+ * @return None
  */
 writeto_mem(port,addr,reg,buf)
 
@@ -157,7 +157,7 @@ writeto_mem(port,addr,reg,buf)
  *        reg   I2C register
  *        nbytes  Receives the data length. 
  *
- * @return Read data
+ * @return A bytes object with the data read.
  */
 readfrom_mem(port,addr,reg,nbytes)
 
@@ -195,8 +195,6 @@ scan(port)
  *        addr  7bit i2c device address
  *        reg   I2C register
  *        buf   Write data  
- *
- * @return number of bytes written
  */
 writeto_mem(port,addr,reg,buf)
 
