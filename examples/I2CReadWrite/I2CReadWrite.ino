@@ -32,16 +32,17 @@ void setup(){
 void loop(){
   uint8_t buf[3] = {0}; 
   
-  /*从0端口的I2C设备读取3个字节到buf中*/
+  /*从0端口的I2C设备的0寄存器中读取3个字节到buf中*/
   if(I2CMultiplexer.read(port,i2c_addr,reg,buf,3) > 0){
     Serial.println((int)buf[0],HEX);  
     Serial.println((int)buf[1],HEX);
     Serial.println((int)buf[2],HEX);
   }
   
+  /*写入I2C的数据*/
   uint8_t data[2] = {111,107};
   
-  /*将data写入端口0上的I2C设备,data的长度为3*/
+  /*将data写入端口0上的I2C设备的0寄存器中,data的长度为3*/
   if (!I2CMultiplexer.write(port,i2c_addr,reg, data, 2)) {
      Serial.println("write OK");
   }
