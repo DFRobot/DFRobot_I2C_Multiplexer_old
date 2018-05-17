@@ -15,7 +15,8 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 <content>
 
 ## Summary
-This is a Library for I2C Multiplexer,it can solve multiple I2C device address conflicts.The function selectPort() can select a port on I2C Multiplexer.After calling function selectPort(), will scan the I2C device on the port.
+这个是I2C Multiplexer的库,它可以解决多个I2C设备地址冲突的问题.调用selectPort()函数选择端口后,主设备将会扫描到这个端口上的I2C,从而与该端口上的I2C设备通信.
+I2C Multiplexer上的拨码开关可以改变I2C Multiplexer的地址.
 
 ## Use
 
