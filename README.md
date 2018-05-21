@@ -64,7 +64,7 @@ void setup(void){
   OLED.setTextSize(2);
   
   OLED.setCursor(0,0);          //设置字符坐标
-  OLED.print("device A");      //显示字符
+  OLED.print("device A");       //显示字符
   OLED.setCursor(0,30);
   OLED.print("addr:0x3C");
 
