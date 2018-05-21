@@ -12,13 +12,17 @@ uint8_t *DFRobot_I2CMultiplexer::scan(uint8_t port){
   memset(dev,0,sizeof(dev));
   uint8_t i = 0;
   selectPort(port);
-  for(uint8_t addr = 0; addr<=127; addr++) {
-    if (addr == I2CMultiplexer){ continue;}
-    uint8_t data;
-    if(! twi_writeTo(addr, &data, 0, 1, 1)) {
-       dev[i] = addr;
-       i++;
-//      dev = addr;
+
+  byte error, address;
+  int nDevices;
+  nDevices = 0;
+  for(address = 1; address < 127; address++ ) {
+    if (address == I2CMultiplexer){ continue;}
+    Wire.beginTransmission(address);
+    error = Wire.endTransmission();
+    if (error == 0){
+      dev[i] = address;
+      i++;
     }
   }
   return dev;
