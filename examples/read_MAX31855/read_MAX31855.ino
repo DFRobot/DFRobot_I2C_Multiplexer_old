@@ -1,10 +1,10 @@
  /*!
   * file read_MAX31855.ino
   * 
-  * 下载MAX31855的库 https://github.com/DFRobot/DFRobot_MAX31855.git
+  * Download MAX31855 library https://github.com/DFRobot/DFRobot_MAX31855.git
   * 
-  * 将MAX31855设备插到I2CMultiplexer的2端口上,然后连接I2CMultiplexer和Arduino,下载此示例
-  * @n 打开串口监视器可以看到温度.
+  * Plug MAX31855 device onto 2 port of I2CMultiplexer,and then connect I2CMultiplexer and Arduino, download the sample
+  * @n  The temperature can be seen after you open serial 
   *
   * Copyright   [DFRobot](http://www.dfrobot.com), 2016
   * Copyright   GNU Lesser General Public License
@@ -16,10 +16,10 @@
 #include <DFRobot_MAX31855.h>
 #include <DFRobot_I2CMultiplexer.h>
 
-/*创建一个MAX31855对象*/
+/* Create a  MAX31855 object*/
 DFRobot_MAX31855 max31855;
 
-/*创建I2C Multiplexer对象, 0x70是I2C Multiplexer的地址*/
+/*Create an I2C Multiplexer object,the address of I2C Multiplexer is 0X70*/
 DFRobot_I2CMultiplexer I2CMultiplexer(0x70);
 
 
@@ -30,16 +30,16 @@ void setup(){
 void loop(){
   int stat;
   
-  /*选择端口2,调用此函数后Arduino将会扫描到端口2上的MAX31855设备*/
+  /*Select port 2, and after calling this function, Arduino will scan the MAX31855 device on port 2*/
   I2CMultiplexer.selectPort(2);
   
-  /*检测I2C设备*/
+  /*Detect I2C device*/
   stat = max31855.scan();
   if(!stat){
     Serial.println("No I2C devices!");
   }
   else{
-    /*读取温度*/
+    /*Read temperature*/
     float temp = max31855.readCelsius();
     Serial.print("Temperature:");
     Serial.print(temp);

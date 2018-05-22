@@ -1,8 +1,8 @@
  /*!
   * file I2CReadWrite.ino
   * 
-  * 将I2C设备插到I2CMultiplexer的0端口上,然后连接I2CMultiplexer和Arduino,下载此示例
-  * @n 打开串口可以看到读取的信息.
+  * Plug the I2C device onto the 0 port of I2cmultiplexer ,then connect i2cmultiplexer and Arduino, and download the sample.
+  * @n The information can be seen after you open serial. 
   *
   * Copyright   [DFRobot](http://www.dfrobot.com), 2016
   * Copyright   GNU Lesser General Public License
@@ -13,16 +13,16 @@
 
 #include <DFRobot_I2CMultiplexer.h>
 
-/*创建一个I2CMultiplexer对象,0x70是I2C Multiplexer的地址*/
+/*Create an I2CMultiplexer object,and the address of I2CMultiplexer is 0X70*/
 DFRobot_I2CMultiplexer I2CMultiplexer(0x70);
 
-/*I2C设备在端口0上*/
+/*Plug I2C device onto port 0*/
 uint8_t port = 0;
 
-/*I2C的地址为24*/
+/*The address of I2C is 24*/
 uint8_t i2c_addr = 24;
 
-/*I2C设备的寄存器地址*/
+/*The register address of I2C*/
 reg = 0;
 
 void setup(){
@@ -32,17 +32,17 @@ void setup(){
 void loop(){
   uint8_t buf[3] = {0}; 
   
-  /*从0端口的I2C设备的0寄存器中读取3个字节到buf中,然后依次将buf中的数据按16进制打印出来*/
+  /*Read 3 bytes from the 0 register of the I2C device on port 0 into the buf, then prints the data from the buf in hexadecimal order*/
   if(I2CMultiplexer.read(port,i2c_addr,reg,buf,3) > 0){
     Serial.println((int)buf[0],HEX);  
     Serial.println((int)buf[1],HEX);
     Serial.println((int)buf[2],HEX);
   }
   
-  /*写入I2C的数据*/
+  /*Wirte the data of I2C*/ 
   uint8_t data[2] = {111,107};
   
-  /*将data写入端口0上的I2C设备的0寄存器中,data的长度为3*/
+  /*Write data to the 0 register of the I2C device on port 0, the length of data is 3*/
   if (!I2CMultiplexer.write(port,i2c_addr,reg, data, 2)) {
      Serial.println("write OK");
   }

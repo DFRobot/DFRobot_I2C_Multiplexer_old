@@ -1,6 +1,6 @@
 # I2C Multiplexer Library for Arduino/ESP32/RaspberrayPi
 This is a Library for I2C Multiplexer,the function is to solve multiple I2C device address conflicts.
-这里放svg图
+Put the SVG here
 ## Table of Contents
 
 * [Summary](#summary)
@@ -15,10 +15,10 @@ This is a Library for I2C Multiplexer,the function is to solve multiple I2C devi
 <content>
 
 ## Summary
-* 这是I2C Multiplexer的库,I2C Multiplexer可以解决一个I2C接口上接多个相同地址设备冲突的问题.
-* I2C Multiplexer有X个I2C子端口，调用selectPort(n)函数选择端口后,主设备将会扫描到子端口n上连接的I2C设备,与子端口n上连接的I2C设备通信. 
-* I2C Multiplexer上的拨码开关可以改变I2C Multiplexer的地址.
-* I2C Multiplexer的子端口上也可以接多个设备
+*This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that an I2C interface connected to multiple devices with the same address.
+*I2C multiplexer has many I2C sub ports, when the Selectport (n) function is called to select a port, the primary device will scan the I2C device that has been connected to sub port n communicates with the I2C device that has been connected to the Sub port n. 
+*The dial switch on I 2 C Multiplexer can change the address of I 2 C Multiplexer.
+*Multiple devices can also be connected on I2C Multiplexer's sub ports
 
 ## Use
 
@@ -32,7 +32,7 @@ void setup(){
   Serial.begin(9600);
 }
 void loop(){
-  dev.selectPort(1);                    //选择端口后, 主机将会扫描到这个端口上的从机
+  dev.selectPort(1);                    // After select port, the host will scan the slave on this port.
   Wire.beginTransmission(I2CAddr);
   Wire.write(0x00); 
   Wire.endTransmission();
@@ -43,32 +43,32 @@ void loop(){
 }
 ```
 
-### 用于SSD1306模块
+###Be used for SSD1306 module 
 ``` C++
 #include "DFRobot_SSD1306_I2C.h"
 #include "DFRobot_I2CMultiplexer.h"
 #include <Wire.h>
 
-/*创建一个OLED对象，地址为0x3c*/
+/*Create an OLED object, the address is 0X3C*/
 DFRobot_SSD1306_I2C OLED(0x3c);
 
-/*创建I2C Multiplexer对象, 0x70是I2C Multiplexer的地址*/
+/*Create an I2C Multiplexer, the address of I2CMultiplexer is 0X70*/
 DFRobot_I2CMultiplexer I2CMulti(0x70);
 
 
 void setup(void){
-  /*让0端口上的OLED显示字符*/
-  I2CMulti.selectPort(0);       //选择端口
-  OLED.begin();                 //OLED初始化
+  /*Let the OLED on port 0 display characters */
+  I2CMulti.selectPort(0);       //Select port 
+  OLED.begin();                 //initialize OLED
   OLED.setTextColor(1);
   OLED.setTextSize(2);
   
-  OLED.setCursor(0,0);          //设置字符坐标
-  OLED.print("device A");       //显示字符
+  OLED.setCursor(0,0);          //Set the coordinate of characters 
+  OLED.print("device A");       //Display characters 
   OLED.setCursor(0,30);
   OLED.print("addr:0x3C");
 
-  /*让1端口上的OLED显示字符*/
+  /*Let the OLED on port 1 display characters */
   I2CMulti.selectPort(1);
   OLED.begin();
   OLED.setTextColor(1);
@@ -135,7 +135,7 @@ uint8_t read(uint8_t port,uint8_t addr,uint8_t reg,uint8_t* data, uint8_t len);
 uint8_t write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len);
 
 /*
- * @brief 选择端口,选择端口后,主设备将扫描到该端口上的从设备
+ * @brief After select port, the host will scan the slave on this port.
  *
  * @param port  I2CMultiplexer port(0~7)
  */

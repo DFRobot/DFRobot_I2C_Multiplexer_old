@@ -5,18 +5,18 @@ import ssd1306
 import I2CMultiplexer
 
 I2CMultiAddr = 0x70     #I2C Multiplexer addr
-I2CMulti = I2CMultiplexer.I2CMultiplexer(I2CMultiAddr)  #创建I2C Multiplexer对象
+I2CMulti = I2CMultiplexer.I2CMultiplexer(I2CMultiAddr)  #Create an I2CMultiplexer object
 
 i2c = I2C(scl=Pin(22), sda=Pin(21), freq=100000)
 
-#让0端口上的SSD1306显示字符
-I2CMulti.selectPort(0)                #选择端口
-lcdA=ssd1306.SSD1306_I2C(128,64,i2c)  #创建SSD1306对象
-lcdA.text("devicd A",0,0)             #设置字符串及字符串的坐标
+#Let the SSD1306 on the port 0 display characters 
+I2CMulti.selectPort(0)                #Select port
+lcdA=ssd1306.SSD1306_I2C(128,64,i2c)  #Create a SSD1306 Object
+lcdA.text("devicd A",0,0)             #Set the coordinate of character string and character 
 lcdA.text("i2c addr 0x3C",0,30)
 lcdA.show()                           #display pix
 
-#让1端口上的SSD1306显示字符
+#Let SSD1306 on port 1 display characters 
 I2CMulti.selectPort(1)
 lcdB=ssd1306.SSD1306_I2C(128,64,i2c)
 lcdB.text("devicd B",0,0)
