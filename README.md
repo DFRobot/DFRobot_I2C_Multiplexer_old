@@ -16,7 +16,7 @@ Put the SVG here
 
 ## Summary
 * This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that multiple devices with the same address.
-* There is 8 ports on I2C multiplexer, when the Selectport (n) function is called to select a port, the host can communicate with slave that has been connected to the Sub port. 
+* There is 8 ports on I2C Multiplexer, when the Selectport (n) function is called to select a port, the host can communicate with slave that has been connected to the Sub port. 
 * The dial switch on I2C Multiplexer can change the address of I2C Multiplexer.
 * Multiple devices can also be connected on I2C Multiplexer's sub ports.
 
