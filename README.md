@@ -15,10 +15,10 @@ Put the SVG here
 <content>
 
 ## Summary
-* This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that an I2C interface connected to multiple devices with the same address.
-* I2C multiplexer has many I2C sub ports, when the Selectport (n) function is called to select a port, the primary device will scan the I2C device that has been connected to sub port n communicates with the I2C device that has been connected to the Sub port n. 
+* This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that multiple devices with the same address.
+* There is 8 ports on I2C multiplexer, when the Selectport (n) function is called to select a port, the host can communicate with slave that has been connected to the Sub port. 
 * The dial switch on I2C Multiplexer can change the address of I2C Multiplexer.
-* Multiple devices can also be connected on I2C Multiplexer's sub ports
+* Multiple devices can also be connected on I2C Multiplexer's sub ports.
 
 ## Use
 
@@ -32,7 +32,7 @@ void setup(){
   Serial.begin(9600);
 }
 void loop(){
-  dev.selectPort(1);                    // After select port, the host will scan the slave on this port.
+  dev.selectPort(1);                    // After select port, the host can communicate with the slave on this port.
   Wire.beginTransmission(I2CAddr);
   Wire.write(0x00); 
   Wire.endTransmission();
@@ -43,7 +43,7 @@ void loop(){
 }
 ```
 
-###Be used for SSD1306 module 
+### Be used for SSD1306 module 
 ``` C++
 #include "DFRobot_SSD1306_I2C.h"
 #include "DFRobot_I2CMultiplexer.h"
@@ -95,7 +95,7 @@ void loop(void){
 /*
  * @brief The constructor
  *
- * @param addr The I2CMultiplexer addr
+ * @param addr The I2CMultiplexer addr, default address is 0x70.
  */
 DFRobot_I2CMultiplexer(uint8_t addr);
 
@@ -104,7 +104,7 @@ DFRobot_I2CMultiplexer(uint8_t addr);
  *
  * @param port The port which to scan
  *
- * @return I2C addr
+ * @return The assemblage of all IIC addresses on the port
  */
 uint8_t *scan(uint8_t port);
 
@@ -135,7 +135,7 @@ uint8_t read(uint8_t port,uint8_t addr,uint8_t reg,uint8_t* data, uint8_t len);
 uint8_t write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len);
 
 /*
- * @brief After select port, the host will scan the slave on this port.
+ * @brief After select port, the host can communicate with the slave on this port.
  *
  * @param port  I2CMultiplexer port(0~7)
  */
@@ -148,7 +148,7 @@ import I2CMultiplexer
 /*
  * @brief The constructor.
  *
- * @param I2CMultiAddr The I2CMultiplexer addr.
+ * @param I2CMultiAddr The I2CMultiplexer addr, default address is 0x70.
  */
 I2CMultiplexer(I2CMultiAddr)
 
@@ -208,7 +208,7 @@ writeto_mem(port,addr,reg,buf)
 readfrom_mem(port,addr,reg,nbytes)
 
 /*
- * @brief Select I2C Port 
+ * @brief Select port, after select port, the host can communicate with the slave on this port.
  *
  * @param port  I2CMultiplexer port(0~7)
  */
@@ -221,7 +221,7 @@ import I2CMultiplexer
 /*
  * @brief The constructor.
  *
- * @param I2CMultiAddr The I2CMultiplexer addr.
+ * @param I2CMultiAddr The I2CMultiplexer addr, default address is 0x70.
  */
 I2CMultiplexer(I2CMultiAddr)
 
@@ -257,7 +257,7 @@ writeto_mem(port,addr,reg,buf)
 readfrom_mem(port,addr,reg,nbytes)
 
 /*
- * @brief Select I2C Port 
+ * @brief Select port, after select port, the host can communicate with the slave on this port.
  *
  * @param port  I2CMultiplexer port(0~7)
  */
@@ -271,7 +271,7 @@ MCU                | Work Well | Work Wrong | Untested  | Remarks
 ------------------ | :----------: | :----------: | :---------: | -----
 FireBeetle-ESP32 |      √       |             |            | 
 RaspberrayPi |      √       |             |            | 
-Leonardo |      √       |             |            | 
+Arduino |      √       |             |            | 
 
 ## History
 
