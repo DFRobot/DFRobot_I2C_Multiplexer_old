@@ -104,7 +104,7 @@ DFRobot_I2CMultiplexer(uint8_t addr);
  *
  * @param port The port which to scan
  *
- * @return The assemblage of all IIC addresses on the port
+ * @return The assemblage of all I2C addresses on the port
  */
 uint8_t *scan(uint8_t port);
 
