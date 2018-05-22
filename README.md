@@ -52,7 +52,7 @@ void loop(){
 /*Create an OLED object, the address is 0X3C*/
 DFRobot_SSD1306_I2C OLED(0x3c);
 
-/*Create an I2C Multiplexer, the address of I2CMultiplexer is 0X70*/
+/*Create an I2C Multiplexer object, the address of I2CMultiplexer is 0X70*/
 DFRobot_I2CMultiplexer I2CMulti(0x70);
 
 
