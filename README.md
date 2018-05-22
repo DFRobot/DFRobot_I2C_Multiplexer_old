@@ -15,10 +15,10 @@ Put the SVG here
 <content>
 
 ## Summary
-*This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that an I2C interface connected to multiple devices with the same address.
-*I2C multiplexer has many I2C sub ports, when the Selectport (n) function is called to select a port, the primary device will scan the I2C device that has been connected to sub port n communicates with the I2C device that has been connected to the Sub port n. 
-*The dial switch on I 2 C Multiplexer can change the address of I 2 C Multiplexer.
-*Multiple devices can also be connected on I2C Multiplexer's sub ports
+* This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that an I2C interface connected to multiple devices with the same address.
+* I2C multiplexer has many I2C sub ports, when the Selectport (n) function is called to select a port, the primary device will scan the I2C device that has been connected to sub port n communicates with the I2C device that has been connected to the Sub port n. 
+* The dial switch on I 2 C Multiplexer can change the address of I 2 C Multiplexer.
+* Multiple devices can also be connected on I2C Multiplexer's sub ports
 
 ## Use
 
