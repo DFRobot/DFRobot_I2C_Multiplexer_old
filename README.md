@@ -16,7 +16,7 @@ Put the SVG here
 
 ## Summary
 * This is I2C Multiplexer library, I2C Multiplexer can solve the conflict that multiple devices with the same address.
-* There is 8 ports on I2C Multiplexer, when the Selectport (n) function is called to select a port, the host can communicate with slave that has been connected to the Sub port. 
+* There is 8 ports on I2C Multiplexer, when the Selectport (n) function is called to select a port, the host can communicate with slave that has been connected to the sub port. 
 * The dial switch on I2C Multiplexer can change the address of I2C Multiplexer.
 * Multiple devices can also be connected on I2C Multiplexer's sub ports.
 
@@ -165,7 +165,7 @@ scan(port)
  * @brief write data to I2C.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
+ *        addr  i2c device address
  *        buf   Write data 
  *
  * @return Number of bytes written
@@ -176,7 +176,7 @@ writeto(port,addr,buf)
  * @brief read data from I2C.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
+ *        addr  i2c device address
  *        buf   The buffer that receives the data. 
  *
  * @return A bytes object with the data read
@@ -187,7 +187,7 @@ readfrom(port,addr,nbytes)
  * @brief write data to I2C memory.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
+ *        addr  i2c device address
  *        reg   i2c register
  *        buf   Write data  
  *
@@ -199,7 +199,7 @@ writeto_mem(port,addr,reg,buf)
  * @brief read data from I2C memory.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit I2C device address
+ *        addr  I2C device address
  *        reg   I2C register
  *        nbytes  Receives the data length. 
  *
@@ -238,7 +238,7 @@ scan(port)
  * @brief write data to I2C memory.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
+ *        addr  i2c device address
  *        reg   I2C register
  *        buf   Write data  
  */
@@ -248,7 +248,7 @@ writeto_mem(port,addr,reg,buf)
  * @brief read data from I2C memory.
  *
  * @param port  I2CMultiplexer port(0~7)
- *        addr  7bit i2c device address
+ *        addr  i2c device address
  *        reg   I2C register
  *        nbytes  Receives the data length. 
  *
