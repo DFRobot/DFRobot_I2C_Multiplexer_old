@@ -220,11 +220,12 @@ void ssd1306_drawPixel(int x, int y, unsigned int color)
 }
 
 // Init SSD1306
-void ssd1306_begin(unsigned int vccstate, unsigned int i2caddr)
+void ssd1306_begin(unsigned int i2caddr)
 {
 	// I2C Init
 
-	_vccstate = vccstate;
+	_vccstate = 0x02;
+	int vccstate = 0x02;
 
 	i2cd = wiringPiI2CSetup(i2caddr);
 	if (i2cd < 0) {
@@ -772,7 +773,7 @@ void ssd1306_drawString(char *str)
 }
 
 // Draw a character
-void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size)
+void ssd1306_drawChar(int x, int y,char c, int color, int size)
 {
 
 	if ((x >= WIDTH) ||	// Clip right
@@ -803,12 +804,12 @@ void ssd1306_drawChar(int x, int y, unsigned char c, int color, int size)
 	}
 }
 
-void ssd1306_String(int x,int y,char *str)
+void ssd1306_String(int x,int y,char *str,int size)
 {
     int i, end;
     end = strlen(str);
     for (i = 0; i < end; i++){
-    ssd1306_drawChar(x,y,str[i],1,2);
+    ssd1306_drawChar(x,y,str[i],1,size);
     x += 13;
     if(x >= 110){
       y += 16;
