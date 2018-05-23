@@ -1,6 +1,7 @@
  /*!
   * file read_MAX31855.ino
   * 
+  * Download Display library https://github.com/DFRobot/DFRobot_Display.git
   * Download SSD1306 library https://github.com/DFRobot/DFRobot_SSD1306.git 
   * 
   * Connect the 2 SSD1306 devices to the port 0 and  port 1 on the i2cmultiplexer respectively and then connect the I2cmultiplexer and Arduino, download this sample. 
@@ -14,7 +15,10 @@
   */
 #include "DFRobot_SSD1306_I2C.h"
 #include "DFRobot_I2CMultiplexer.h"
+#include "DFRobot_Character.h"
+#include "DFRobot_GT30L.h"
 #include <Wire.h>
+#include <SPI.h>
 
 /*Create an OLED object, the address is 0x3c*/ 
 DFRobot_SSD1306_I2C OLED(0x3c);

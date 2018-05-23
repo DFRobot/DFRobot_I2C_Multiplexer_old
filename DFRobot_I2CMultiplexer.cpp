@@ -36,17 +36,16 @@ void DFRobot_I2CMultiplexer::selectPort(uint8_t port){
 }
 
 uint8_t DFRobot_I2CMultiplexer::write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len){
-   selectPort(port);
-   
-   Wire.beginTransmission(addr); // transmit to device #8
-   Wire.write(reg);              // sends one byte
-  
-   for(uint8_t i = 0; i < len; i++){
-      Wire.write(*buf); 
-      buf++;
-   }
-   Wire.endTransmission();    // stop transmitting
-   return 0;
+  selectPort(port);
+
+  Wire.beginTransmission(addr); // transmit to device #8
+  Wire.write(reg);              // sends one byte
+  uint8_t i = 0;
+  for(i = 0; i < len; i++){
+    Wire.write(*buf); 
+    buf++;
+  }
+  Wire.endTransmission();    // stop transmitting
 }
 
 

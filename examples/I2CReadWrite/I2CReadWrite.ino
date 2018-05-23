@@ -44,8 +44,6 @@ void loop(){
   uint8_t data[2] = {111,107};
   
   /*Write data to the 0 register of the I2C device on port 0, the length of data is 3*/
-  if (!I2CMultiplexer.write(port,i2c_addr,reg, data, 2)) {
-     Serial.println("write OK");
-  }
+  I2CMultiplexer.write(port,i2c_addr,reg, data, 2);
   delay(1000);
 }
