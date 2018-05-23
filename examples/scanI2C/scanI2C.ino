@@ -11,16 +11,15 @@
   * date  2018-5-10
   */
 #include <DFRobot_I2CMultiplexer.h>
-
+#include <Wire.h>
 /*Create an I2CMultiplexer object, the address of I2CMultiplexer is 0x70*/
 DFRobot_I2CMultiplexer I2CMultiplexer(0x70);
 
 void setup(){
-  while(!Serial);
+  //while(!Serial);
   Serial.begin(9600);
   delay(1000);
   Serial.println("Scan ready!");
-  int i = 0;
   
   /*Print I2C device of each port*/
   for (uint8_t port=0; port<8; port++) {

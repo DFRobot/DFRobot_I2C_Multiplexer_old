@@ -2,9 +2,9 @@
 #define _DFRobot_I2CMultiplexer_H_
 #include "Wire.h"
 #include <Arduino.h>
-extern "C" { 
-#include "utility/twi.h"  // from Wire library, so we can do bus scanning
-}
+//extern "C" { 
+//#include "utility/twi.h"  // from Wire library, so we can do bus scanning
+//}
 class DFRobot_I2CMultiplexer
 {
 public:
@@ -15,7 +15,7 @@ public:
   uint8_t write(uint8_t port,uint8_t addr, uint8_t reg,uint8_t* buf, uint8_t len);
 
 private:
-  uint8_t I2CMultiplexer = 0x70;
+  uint8_t I2CMultiplexer;
 };
 
 #endif

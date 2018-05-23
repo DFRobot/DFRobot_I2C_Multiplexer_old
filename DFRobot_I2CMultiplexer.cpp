@@ -55,7 +55,7 @@ uint8_t DFRobot_I2CMultiplexer::read(uint8_t port,uint8_t addr,uint8_t reg,uint8
   int i = 0;
   Wire.beginTransmission(addr); //Start transmission to device 
   Wire.write(reg); //Sends register address to read rom
-  Wire.endTransmission(false); //End transmission
+  Wire.endTransmission(); //End transmission
   
   Wire.requestFrom(addr, len);//Send data n-bytes read
    while (Wire.available())   // slave may send less than requested

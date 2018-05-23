@@ -12,6 +12,7 @@
   */
 
 #include <DFRobot_I2CMultiplexer.h>
+#include <Wire.h>
 
 /*Create an I2CMultiplexer object,and the address of I2CMultiplexer is 0X70*/
 DFRobot_I2CMultiplexer I2CMultiplexer(0x70);
@@ -23,7 +24,7 @@ uint8_t port = 0;
 uint8_t i2c_addr = 24;
 
 /*The register address of I2C*/
-reg = 0;
+uint8_t reg = 0;
 
 void setup(){
   Serial.begin(9600);
