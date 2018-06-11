@@ -1,5 +1,5 @@
  /*!
-  * file read_MAX31855.ino
+  * file Multi_SSD1306.ino
   * 
   * Download Display library https://github.com/DFRobot/DFRobot_Display.git
   * Download SSD1306 library https://github.com/DFRobot/DFRobot_SSD1306.git 
