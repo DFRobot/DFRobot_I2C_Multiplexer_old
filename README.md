@@ -1,6 +1,7 @@
 # I2C Multiplexer Library for Arduino/ESP32/RaspberrayPi
 This is a Library for I2C Multiplexer,the function is to solve multiple I2C device address conflicts.
-Put the SVG here
+![image](https://github.com/DFRobot/DFRobot_I2C_Multiplexer/blob/master/image/top.jpg)
+![image](https://github.com/DFRobot/DFRobot_I2C_Multiplexer/blob/master/image/bottom.jpg)
 ## Table of Contents
 
 * [Summary](#summary)
